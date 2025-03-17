@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Board</title>
+    <style>
+      :root {
+        /* --thickness: 1px;
+        --main-height: 30px;
+        --main-width: 30px;
+        --depth: calc(var(--thickness) * 0.5);
+        --lightShade: rgb(255, 204, 204);
+        --lighterShade: rgb(255, 153, 153);
+        --mediumShade: rgb(255, 102, 102);
+        --darkShade: rgb(204, 51, 51);
+        --darkerShade: rgb(153, 0, 0);
+        --DarkestShade: rgb(102, 0, 0); */
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        perspective: 1000px;
+      }
+      .lid {
+        --length: 20px;
+        --breadth: 40px;
+        --height: 5px;
+        --thickness: 1px;
+        position: relative;
+        top: 72px;
+        transform-style: preserve-3d;
+        transform-origin: center;
+        transform: rotateX(242deg) rotateY(170deg);
+        width: var(--breadth);
+        height: var(--length);
+      }
+      /* .centering-container{
+        position: absolute;
+        transform: translate(50% 50%);
+      } */
+      .topPlain {
+        --main-height: var(--length);
+        --main-width: var(--breadth);
+        --depth: calc(var(--thickness) * 0.5);
+        --lightShade: rgb(255, 204, 204); /* Light red */
+        --lighterShade: rgb(255, 153, 153); /* Lighter red */
+        --mediumShade: rgb(255, 102, 102); /* Medium red */
+        --darkShade: rgb(204, 51, 51); /* Dark red */
+        --darkerShade: rgb(153, 0, 0); /* Darker red */
+        --DarkestShade: rgb(102, 0, 0); /* Darkest red */
+        width: var(--main-width);
+        height: var(--main-height);
+        position: absolute;
+        transform-style: preserve-3d;
+        transform: rotateX(0deg) rotateY(0deg);
+        /* animation: rotate 10s infinite linear; */
+      }
+      .topRight {
+        /* --thickness: 1px; */
+        --main-height: var(--height);
+        --main-width: var(--length);
+        --depth: calc(var(--thickness) * 0.5);
+        --lightShade: rgb(255, 204, 204);
+        --lighterShade: rgb(255, 153, 153);
+        --mediumShade: rgb(255, 102, 102);
+        --darkShade: rgb(204, 51, 51);
+        --darkerShade: rgb(153, 0, 0);
+        --DarkestShade: rgb(102, 0, 0);
+        width: var(--main-width);
+        height: var(--main-height);
+        position: absolute;
+        /* perspective: 7px; */
+        bottom: calc(((var(--length) / 5) - 1px ) * 2.5);
+        right: -9.5px;
+        transform-style: preserve-3d;
+        transform: rotateX(90deg) rotateY(90deg)
+          translateY(calc(var(--main-height) / 2)) translateY(-0.5px);
+        /* animation: rotate 10s infinite linear; */
+      }
+      .topLeft {
+        --main-height: var(--height);
+        --main-width: var(--length);
+        --main-width: 30px;
+        --depth: calc(var(--thickness) * 0.5);
+        --lightShade: rgb(255, 204, 204);
+        --lighterShade: rgb(255, 153, 153);
+        --mediumShade: rgb(255, 102, 102);
+        --darkShade: rgb(204, 51, 51);
+        --darkerShade: rgb(153, 0, 0);
+        --DarkestShade: rgb(102, 0, 0);
+        width: var(--main-width);
+        height: var(--main-height);
+        position: absolute;
+        bottom: calc(
+          var(--main-height) / 2 - (20px + var(--main-height) - 5px)
+        );
+        left: 14.5px;
+        transform-style: preserve-3d;
+        transform: rotateX(90deg) rotateY(0deg) rotateY(90deg)
+          translateY(calc(var(--main-height) / 2));
+        /* animation: rotate 10s infinite linear; */
+      }
+      .topTop {
+        --thickness: 1px;
+        --main-height: 5px;
+        --main-width: 30px;
+        --depth: calc(var(--thickness) * 0.5);
+        --lightShade: rgb(255, 204, 204);
+        --lighterShade: rgb(255, 153, 153);
+        --mediumShade: rgb(255, 102, 102);
+        --darkShade: rgb(204, 51, 51);
+        --darkerShade: rgb(153, 0, 0);
+        --DarkestShade: rgb(102, 0, 0);
+        width: var(--main-width);
+        height: var(--main-height);
+        position: absolute;
+        top: 27px;
+        /* bottom: calc(
+          var(--main-height) / 2 - (20px + var(--main-height) - 5px)
+        ); */
+        left: 0px;
+        transform-style: preserve-3d;
+        transform: rotateX(90deg) rotateY(90deg) rotateY(270deg)
+          translateY(calc(var(--main-height) / 2));
+        /* animation: rotate 10s infinite linear; */
+      }
+      .topBottom {
+        --thickness: 1px;
+        --main-height: 5px;
+        --main-width: 30px;
+        --depth: calc(var(--thickness) * 0.5);
+        --lightShade: rgb(255, 204, 204);
+        --lighterShade: rgb(255, 153, 153);
+        --mediumShade: rgb(255, 102, 102);
+        --darkShade: rgb(204, 51, 51);
+        --darkerShade: rgb(153, 0, 0);
+        --DarkestShade: rgb(102, 0, 0);
+        width: var(--main-width);
+        height: var(--main-height);
+        position: absolute;
+        /* top: 28px; */
+        bottom: 27px;
+        /* bottom: calc(
+          var(--main-height) / 2 - (20px + var(--main-height) - 5px)
+        ); */
+        left: 0px;
+        transform-style: preserve-3d;
+        transform: rotateX(90deg) rotateY(90deg) rotateY(90deg)
+          translateY(calc(var(--main-height) / 2));
+        /* animation: rotate 10s infinite linear; */
+      }
+      .box {
+        width: var(--main-width);
+        height: var(--main-height);
+        position: absolute;
+        background: linear-gradient(
+          145deg,
+          var(--lightShade),
+          var(--lighterShade)
+        );
+      }
+      .box.front {
+        transform: translateZ(var(--depth));
+        background: linear-gradient(
+          145deg,
+          var(--lighterShade),
+          var(--DarkestShade)
+        );
+        width: var(--main-width);
+      }
+      .box.back {
+        transform: rotateY(180deg) translateZ(var(--depth));
+        background: linear-gradient(
+          235deg,
+          var(--lighterShade),
+          var(--DarkestShade)
+        );
+        width: var(--main-width);
+      }
+      .box.right {
+        transform: rotateY(270deg) rotateX(180deg)
+          translateZ(calc(var(--depth) * -1 + var(--main-width)));
+        width: var(--thickness);
+        background: linear-gradient(
+          145deg,
+          var(--darkerShade),
+          var(--mediumShade)
+        );
+      }
+      .box.left {
+        transform: rotateY(-90deg) rotateX(180deg)
+          translateZ(calc(var(--depth) * -1));
+        width: var(--thickness);
+        background: linear-gradient(
+          145deg,
+          var(--mediumShade),
+          var(--lighterShade)
+        );
+      }
+      .box.top {
+        transform: rotateX(90deg)
+          translateZ(calc(var(--thickness) - var(--depth)));
+        height: var(--thickness);
+        background: linear-gradient(
+          145deg,
+          var(--lighterShade),
+          var(--mediumShade)
+        );
+      }
+      .box.bottom {
+        transform: rotateX(-90deg)
+          translateZ(calc(var(--main-height) - var(--depth)));
+        height: var(--thickness);
+        background: linear-gradient(
+          145deg,
+          var(--darkShade),
+          var(--DarkestShade)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lid">
+      <!-- <div class="centering-container"> -->
+      <div class="topPlain">
+        <div class="box right"></div>
+        <div class="box left"></div>
+        <div class="box front"></div>
+        <div class="box back"></div>
+        <div class="box top"></div>
+        <div class="box bottom"></div>
+      </div>
+      <div class="topRight">
+        <div class="box right"></div>
+        <div class="box left"></div>
+        <div class="box front"></div>
+        <div class="box back"></div>
+        <div class="box top"></div>
+        <div class="box bottom"></div>
+      </div>
+      <div class="topLeft">
+        <div class="box right"></div>
+        <div class="box left"></div>
+        <div class="box front"></div>
+        <div class="box back"></div>
+        <div class="box top"></div>
+        <div class="box bottom"></div>
+      </div>
+      <!--<div class="topTop">
+        <div class="box right"></div>
+        <div class="box left"></div>
+        <div class="box front"></div>
+        <div class="box back"></div>
+        <div class="box top"></div>
+        <div class="box bottom"></div>
+      </div>
+      <div class="topBottom">
+        <div class="box right"></div>
+        <div class="box left"></div>
+        <div class="box front"></div>
+        <div class="box back"></div>
+        <div class="box top"></div>
+        <div class="box bottom"></div>
+      </div> -->
+      <!-- </div> -->
+    </div>
+  </body>
+</html>
