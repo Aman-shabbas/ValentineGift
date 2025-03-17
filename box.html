@@ -28,7 +28,7 @@
       }
       .lid {
         --length: 20px;
-        --breadth: 40px;
+        --breadth: 30px;
         --height: 5px;
         --thickness: 1px;
         position: relative;
@@ -85,7 +85,7 @@
       .topLeft {
         --main-height: var(--height);
         --main-width: var(--length);
-        --main-width: 30px;
+        /* --main-width: 30px; */
         --depth: calc(var(--thickness) * 0.5);
         --lightShade: rgb(255, 204, 204);
         --lighterShade: rgb(255, 153, 153);
@@ -96,13 +96,11 @@
         width: var(--main-width);
         height: var(--main-height);
         position: absolute;
-        bottom: calc(
-          var(--main-height) / 2 - (20px + var(--main-height) - 5px)
-        );
-        left: 14.5px;
+        bottom: calc(((var(--length) / 5) - 1px ) * 2.5);
+        left: -9.5px;
         transform-style: preserve-3d;
         transform: rotateX(90deg) rotateY(0deg) rotateY(90deg)
-          translateY(calc(var(--main-height) / 2));
+          translateY(calc(var(--main-height) / 2)) translateY(-0.5px);
         /* animation: rotate 10s infinite linear; */
       }
       .topTop {
