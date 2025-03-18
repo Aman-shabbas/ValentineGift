@@ -29,20 +29,16 @@
       .lid {
         --length: 20px;
         --breadth: 30px;
-        --height: 5px;
+        --height: 10px;
         --thickness: 1px;
         position: relative;
         top: 72px;
         transform-style: preserve-3d;
         transform-origin: center;
-        transform: rotateX(242deg) rotateY(170deg);
+        transform: rotateX(38deg) rotateY(0deg) rotateZ(50deg);
         width: var(--breadth);
         height: var(--length);
       }
-      /* .centering-container{
-        position: absolute;
-        transform: translate(50% 50%);
-      } */
       .topPlain {
         --main-height: var(--length);
         --main-width: var(--breadth);
@@ -75,11 +71,14 @@
         height: var(--main-height);
         position: absolute;
         /* perspective: 7px; */
-        bottom: calc(((var(--length) / 5) - 1px ) * 2.5);
-        right: -9.5px;
+        bottom: calc(
+          calc(15px - ((var(--height) / 5) - 1px) * 2.5) -
+            ((var(--length) / 5) - 1px) * 2.5
+        );
+        right: calc(-4.5px + ((var(--length) / 10) - 1px) * -5);
         transform-style: preserve-3d;
         transform: rotateX(90deg) rotateY(90deg)
-          translateY(calc(var(--main-height) / 2)) translateY(-0.5px);
+          translateY(calc(var(--main-height) / 2)) translateY(-0.4px);
         /* animation: rotate 10s infinite linear; */
       }
       .topLeft {
@@ -96,17 +95,20 @@
         width: var(--main-width);
         height: var(--main-height);
         position: absolute;
-        bottom: calc(((var(--length) / 5) - 1px ) * 2.5);
-        left: -9.5px;
+        bottom: calc(
+          calc(15px - ((var(--height) / 5) - 1px) * 2.5) -
+            ((var(--length) / 5) - 1px) * 2.5
+        );
+        left: calc(-4.5px + ((var(--length) / 10) - 1px) * -5);
         transform-style: preserve-3d;
-        transform: rotateX(90deg) rotateY(0deg) rotateY(90deg)
-          translateY(calc(var(--main-height) / 2)) translateY(-0.5px);
+        transform: rotateX(90deg) rotateY(90deg)
+          translateY(calc(var(--main-height) / 2)) translateY(-0.4px);
         /* animation: rotate 10s infinite linear; */
       }
       .topTop {
-        --thickness: 1px;
-        --main-height: 5px;
-        --main-width: 30px;
+        /* --thickness: var(--thickness); */
+        --main-height: var(--height);
+        --main-width: var(--breadth);
         --depth: calc(var(--thickness) * 0.5);
         --lightShade: rgb(255, 204, 204);
         --lighterShade: rgb(255, 153, 153);
@@ -117,20 +119,18 @@
         width: var(--main-width);
         height: var(--main-height);
         position: absolute;
-        top: 27px;
-        /* bottom: calc(
-          var(--main-height) / 2 - (20px + var(--main-height) - 5px)
-        ); */
+        top: calc(calc(17px - ((var(--height) / 5) - 1px) * 2.5));
+        
         left: 0px;
         transform-style: preserve-3d;
         transform: rotateX(90deg) rotateY(90deg) rotateY(270deg)
-          translateY(calc(var(--main-height) / 2));
+          translateY(calc(var(--main-height) / 2)) translateY(-0.4px);
         /* animation: rotate 10s infinite linear; */
       }
       .topBottom {
-        --thickness: 1px;
-        --main-height: 5px;
-        --main-width: 30px;
+        /* --thickness: 1px; */
+        --main-height: var(--height);
+        --main-width: var(--breadth);
         --depth: calc(var(--thickness) * 0.5);
         --lightShade: rgb(255, 204, 204);
         --lighterShade: rgb(255, 153, 153);
@@ -142,14 +142,14 @@
         height: var(--main-height);
         position: absolute;
         /* top: 28px; */
-        bottom: 27px;
+        bottom: calc(calc(17px - ((var(--height) / 5) - 1px) * 2.5));
         /* bottom: calc(
           var(--main-height) / 2 - (20px + var(--main-height) - 5px)
         ); */
         left: 0px;
         transform-style: preserve-3d;
         transform: rotateX(90deg) rotateY(90deg) rotateY(90deg)
-          translateY(calc(var(--main-height) / 2));
+          translateY(calc(var(--main-height) / 2)) translateY(-0.4px);
         /* animation: rotate 10s infinite linear; */
       }
       .box {
@@ -249,7 +249,7 @@
         <div class="box top"></div>
         <div class="box bottom"></div>
       </div>
-      <!--<div class="topTop">
+      <div class="topTop">
         <div class="box right"></div>
         <div class="box left"></div>
         <div class="box front"></div>
@@ -264,7 +264,7 @@
         <div class="box back"></div>
         <div class="box top"></div>
         <div class="box bottom"></div>
-      </div> -->
+      </div>
       <!-- </div> -->
     </div>
   </body>
